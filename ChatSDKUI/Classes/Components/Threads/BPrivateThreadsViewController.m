@@ -21,7 +21,8 @@
 {
     self = [super initWithNibName:Nil bundle:[NSBundle uiBundle]];
     if (self) {
-        self.title = [NSBundle t:bConversations];
+       // self.title = [NSBundle t:bConversations];
+        self.title =  NSLocalizedString(@"Chat",nil);
         self.tabBarItem.image = [NSBundle uiImageNamed: @"icn_30_chat.png"];
 
     }

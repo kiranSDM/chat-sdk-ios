@@ -36,7 +36,8 @@
 
 -(instancetype) initWithUsersToExclude: (NSArray *) users onComplete: (void(^)(NSArray * users, NSString * name)) action {
     if ((self = [self init])) {
-        self.title = [NSBundle t:bPickFriends];
+        //self.title = [NSBundle t:bPickFriends];
+        self.title =  NSLocalizedString(@"New Chat",nil);
         [_contactsToExclude addObjectsFromArray:users];
         self.usersToInvite = action;
     }
@@ -46,7 +47,8 @@
 -(instancetype) init {
     self = [super initWithNibName:@"BFriendsListViewController" bundle:[NSBundle uiBundle]];
     if (self) {
-        self.title = [NSBundle t:bPickFriends];
+    //    self.title = [NSBundle t:bPickFriends];
+        self.title =  NSLocalizedString(@"New Chat",nil);
         _selectedContacts = [NSMutableArray new];
         _contacts = [NSMutableArray new];
         _contactsToExclude = [NSMutableArray new];
@@ -59,8 +61,9 @@
     
     groupNameTextField.placeholder = [NSBundle t:bGroupName];
     groupNameTextField.delegate = self;
+    //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle t:bBack] style:UIBarButtonItemStylePlain target:self action:@selector(dismissView)];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle t:bBack] style:UIBarButtonItemStylePlain target:self action:@selector(dismissView)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"Back",nil) style:UIBarButtonItemStylePlain target:self action:@selector(dismissView)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:self.getRightBarButtonActionTitle style:UIBarButtonItemStylePlain target:self action:@selector(composeMessage)];
     
     // Takes into account the status and navigation bar
@@ -69,8 +72,8 @@
     self.names = [NSMutableArray array];
     _tokenField.delegate = self;
     _tokenField.dataSource = self;
-    _tokenField.placeholderText = [NSBundle t:bEnterNamesHere];
-    _tokenField.toLabelText = [NSBundle t:bTo];
+    _tokenField.placeholderText =  NSLocalizedString(@"SearchMembers",nil);//[NSBundle t:bEnterNamesHere]; 
+ //   _tokenField.toLabelText = [NSBundle t:bTo];
     _tokenField.userInteractionEnabled = YES;
     
     [_tokenField setColorScheme:[UIColor colorWithRed:61/255.0f green:149/255.0f blue:206/255.0f alpha:1.0f]];
